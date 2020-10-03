@@ -189,6 +189,7 @@ def reduce(fn, start):
 
     # TODO: Implement for Task 0.3.
     def reduce_fn(ls):
+        ls = list(ls)
         return functools.reduce(fn, [start] + ls)
 
     return reduce_fn
