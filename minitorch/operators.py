@@ -1,42 +1,51 @@
 import math
 
-## Task 0.1
-## Mathematical operators
+import functools
+
+# Task 0.1
+# Mathematical operators
 
 
 def mul(x, y):
     ":math:`f(x, y) = x * y`"
-    raise NotImplementedError('Need to include this file from past assignment.')
+    # TODO: Implement for Task 0.1.
+    return x * y
 
 
 def id(x):
     ":math:`f(x) = x`"
-    raise NotImplementedError('Need to include this file from past assignment.')
+    # TODO: Implement for Task 0.1.
+    return x
 
 
 def add(x, y):
     ":math:`f(x, y) = x + y`"
-    raise NotImplementedError('Need to include this file from past assignment.')
+    # TODO: Implement for Task 0.1.
+    return x + y
 
 
 def neg(x):
     ":math:`f(x) = -x`"
-    raise NotImplementedError('Need to include this file from past assignment.')
+    # TODO: Implement for Task 0.1.
+    return -x
 
 
 def lt(x, y):
     ":math:`f(x) =` 1.0 if x is less than y else 0.0"
-    raise NotImplementedError('Need to include this file from past assignment.')
+    # TODO: Implement for Task 0.1.
+    return 1 if x < y else 0
 
 
 def eq(x, y):
     ":math:`f(x) =` 1.0 if x is equal to y else 0.0"
-    raise NotImplementedError('Need to include this file from past assignment.')
+    # TODO: Implement for Task 0.1.
+    return 1 if x == y else 0
 
 
 def max(x, y):
     ":math:`f(x) =` x if x is greater than y else y"
-    raise NotImplementedError('Need to include this file from past assignment.')
+    # TODO: Implement for Task 0.1.
+    return max(x, y)
 
 
 def sigmoid(x):
@@ -51,13 +60,11 @@ def sigmoid(x):
 
     for stability.
 
-    Args:
-        x (float): input
-
-    Returns:
-        float : sigmoid value
     """
-    raise NotImplementedError('Need to include this file from past assignment.')
+    # TODO: Implement for Task 0.1.
+    if x >= 0:
+        return 1 / (1 + math.exp(-x))
+    return math.exp(x) / (1 + math.exp(x))
 
 
 def relu(x):
@@ -65,19 +72,15 @@ def relu(x):
     :math:`f(x) =` x if x is greater than 0, else 0
 
     (See `<https://en.wikipedia.org/wiki/Rectifier_(neural_networks)>`_ .)
-
-    Args:
-        x (float): input
-
-    Returns:
-        float : relu value
     """
-    raise NotImplementedError('Need to include this file from past assignment.')
+    # TODO: Implement for Task 0.1.
+    return x if x > 0 else 0
 
 
 def relu_back(x, y):
     ":math:`f(x) =` y if x is greater than 0 else 0"
-    raise NotImplementedError('Need to include this file from past assignment.')
+    # TODO: Implement for Task 0.1.
+    return y if x > 0 else 0
 
 
 EPS = 1e-6
@@ -103,11 +106,11 @@ def inv(x):
 
 
 def inv_back(a, b):
-    return -(1.0 / a ** 2) * b
+    return -(1.0 / a**2) * b
 
 
-## Task 0.3
-## Higher-order functions.
+# Task 0.3
+# Higher-order functions.
 
 
 def map(fn):
@@ -120,13 +123,17 @@ def map(fn):
     See `<https://en.wikipedia.org/wiki/Map_(higher-order_function)>`_
 
     Args:
-        fn (one-arg function): Function from one value to one value.
+        fn (one-arg function): process one value
 
     Returns:
-        function : A function that takes a list, applies `fn` to each element, and returns a
-        new list
+        function : a function that takes a list and applies `fn` to each element
     """
-    raise NotImplementedError('Need to include this file from past assignment.')
+
+    # TODO: Implement for Task 0.3.
+    def map_higher(ls):
+        return [fn(x) for x in ls]
+
+    return map_higher  # returning function
 
 
 def negList(ls):
@@ -147,10 +154,14 @@ def zipWith(fn):
 
     Returns:
         function : takes two equally sized lists `ls1` and `ls2`, produce a new list by
-        applying fn(x, y) on each pair of elements.
+        applying fn(x, y) one each pair of elements.
 
     """
-    raise NotImplementedError('Need to include this file from past assignment.')
+
+    # TODO: Implement for Task 0.3.
+    def zip_with(ls1, ls2):
+        return [fn(x, y) for x, y in zip(ls1, ls2)]
+    return zip_with
 
 
 def addLists(ls1, ls2):
@@ -173,15 +184,27 @@ def reduce(fn, start):
         function : function that takes a list `ls` of elements
         :math:`x_1 \ldots x_n` and computes the reduction :math:`fn(x_3, fn(x_2,
         fn(x_1, x_0)))`
+
     """
-    raise NotImplementedError('Need to include this file from past assignment.')
+
+    # TODO: Implement for Task 0.3.
+    def reduce_fn(ls):
+        return functools.reduce(fn, [start] + ls)
+
+    return reduce_fn
 
 
 def sum(ls):
-    "Sum up a list using :func:`reduce` and :func:`add`."
-    raise NotImplementedError('Need to include this file from past assignment.')
+    """
+    Sum up a list using :func:`reduce` and :func:`add`.
+    """
+    # TODO: Implement for Task 0.3.
+    return reduce(add, 0)(ls)
 
 
 def prod(ls):
-    "Product of a list using :func:`reduce` and :func:`mul`."
-    raise NotImplementedError('Need to include this file from past assignment.')
+    """
+    Product of a list using :func:`reduce` and :func:`mul`.
+    """
+    # TODO: Implement for Task 0.3.
+    return reduce(mul, 1)(ls)
